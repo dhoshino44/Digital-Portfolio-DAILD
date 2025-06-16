@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daiju Hoshino - Director of AI Learning & Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333; /* Dark text for readability on gradient background */
+        }
+
+        .philosophy .section-title {
+            color: #667eea; /* Primary blue for title */
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .philosophy-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            color: #000; /* Changed to black for readability */
+        }
+
+        .philosophy-highlight h3 {
+             color: #000; /* Changed to black for readability */
+        }
+
+        /* Projects Grid (now projects-grid-container) */
+        .projects-grid-container { /* Renamed from .projects-grid */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Default for responsiveness */
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-items: center; /* Center items within cells */
+            align-items: start; /* Align items to the start of their cells vertically */
+        }
+
+        /* Specific layout for the first three cards (triangle) and the last (spanning) */
+        @media (min-width: 769px) { /* Apply triangle/spanning layout on larger screens */
+            .projects-grid-container {
+                grid-template-columns: 1fr 1fr; /* Two columns for the base of the triangle */
+            }
+
+            /* Card 1: Top of the triangle */
+            .projects-grid-container .project-card:nth-child(1) {
+                grid-column: 1 / -1; /* Spans both columns */
+                max-width: 450px; /* Adjust width as desired for the top card */
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Card 2: Left of the base */
+            .projects-grid-container .project-card:nth-child(2) {
+                grid-column: 1; /* Place in the first column of the next available row */
+            }
+
+            /* Card 3: Right of the base */
+            .projects-grid-container .project-card:nth-child(3) {
+                grid-column: 2; /* Place in the second column of the same row as Card 2 */
+            }
+
+            /* Card 4: Full span below */
+            .projects-grid-container .project-card:nth-child(4) {
+                grid-column: 1 / -1; /* Spans both columns for the last card */
+                width: 100%; /* Ensure it takes full horizontal space */
+                max-width: none; /* Override any max-width from general project-card rules */
+            }
+        }
+
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .highlight-stat {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        /* Vision Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .phase-number {
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #667eea;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .article-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .article-theme {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .projects-grid-container { /* Renamed for consistency */
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                margin-left: 2rem;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Interactive Elements - now act as triggers */
+        .interactive-stat {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-stat:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        /* Styles for the details display card, mimicking project-card */
+        .details-display-card {
+            background: white; /* White background like project-card */
+            border-radius: 15px;
+            padding: 0; /* Initially no padding, controlled by .active */
+            margin-top: 3rem; /* Space below the stat cards */
+            color: #333; /* Dark text for readability on white background */
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Lighter shadow like project-card */
+            position: relative; /* For close button positioning */
+            overflow: hidden; /* For the ::before pseudo-element */
+            font-family: 'Arial', sans-serif; /* Matched to body/project-card */
+            line-height: 1.6; /* Matched to body/project-card */
+
+            /* Initial hidden state for animation */
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.7s ease-out, opacity 0.7s ease-out, padding 0.7s ease-out;
+        }
+
+        .details-display-card::before { /* Added this for the gradient top border */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .details-display-card.active {
+            max-height: 500px; /* Adjust as needed for content size */
+            opacity: 1;
+            padding: 2rem; /* Add padding when active */
+        }
+
+        .details-display-card h4 {
+            color: #333; /* Dark headings for readability */
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .details-display-card p {
+            margin-bottom: 1rem;
+            color: #666; /* Matching project-description color */
+        }
+
+        .details-display-card ul {
+            list-style: disc outside;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .details-display-card ul li {
+            margin-bottom: 0.5rem;
+            color: #666; /* Matching project-description color */
+        }
+
+        .details-display-card ul li strong {
+            color: #333; /* Ensure strong tags are darker */
+        }
+
+
+        .close-details-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 2px solid #666; /* Darker border for visibility on white */
+            color: #666; /* Darker color for visibility on white */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .close-details-button:hover {
+            background-color: #f0f0f0; /* Light background on hover */
+            color: #667eea; /* Primary color on hover */
+        }
+
+        /* Hidden templates for content */
+        .hidden-content-template {
+            display: none;
+        }
+
+        /* New styles for article details card */
+        .article-details-display-card {
+            background: white;
+            border-radius: 15px;
+            padding: 0;
+            margin-top: 3rem;
+            color: #333;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.7s ease-out, opacity 0.7s ease-out, padding 0.7s ease-out;
+        }
+
+        .article-details-display-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .article-details-display-card.active {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+            padding: 2rem;
+        }
+
+        .article-details-display-card h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .article-details-display-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .article-details-display-card a {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .article-details-display-card .close-details-button {
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 2px solid #666;
+            color: #666;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .article-details-display-card .close-details-button:hover {
+            background-color: #f0f0f0;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">Daiju Hoshino</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#articles">Articles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Updated profile image to a placeholder -->
+                <img src="Images/Portrait.jpg" alt="Placeholder Image" class="profile-img">
+                <h1>Daiju Hoshino</h1>
+                <h2>Department Chair & AI Innovation Leader</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Transforming education through responsible AI integration at Tarrant County College Northwest Campus
+                </p>
+                <a href="#philosophy" class="cta-button">Explore My Vision</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="section philosophy">
+        <div class="container">
+            <h2 class="section-title">Educational Philosophy</h2>
+            <div class="philosophy-content">
+                <p>This is an exciting—and uneasy—time in education. The emergence and rapid evolution of generative AI, particularly those based on the Transformer architecture, have fundamentally challenged our understanding of what it means to be human. These tools now perform tasks once thought uniquely human: storytelling, poetry, music composition, art, and more. This is no longer a distant speculation—it is the elephant in the room.</p>
+                <br>
+                <p>As educators, it is our responsibility to confront this shift with seriousness and intentionality. We must understand the true impact of this technology, how it will change our lives, and how to incorporate it into our educational systems to provide students with relevant, practical, and transformative learning experiences.</p>
+                
+                <div class="philosophy-highlight">
+                    <h3 style="margin-bottom: 1rem;">My Mission</h3>
+                    <p>To help Tarrant County College become a <strong>national leader in responsible, creative, and equitable AI integration</strong>—serving all campuses, empowering faculty and staff, and preparing students to thrive in a rapidly evolving world.</p>
+                </div>
+
+                <p>I bring a uniquely integrated background shaped by three interconnected perspectives:</p>
+                
+                <div class="stats-container">
+                    <div class="interactive-stat" data-content-id="admin-details">
+                        <span class="stat-number">🏛️</span>
+                        <span class="stat-label">Administrator & Leader</span>
+                    </div>
+                    <div class="interactive-stat" data-content-id="faculty-details">
+                        <span class="stat-number">👨‍🏫</span>
+                        <span class="stat-label">Award-Winning Faculty</span>
+                    </div>
+                    <div class="interactive-stat" data-content-id="staff-details">
+                        <span class="stat-number">🤝</span>
+                        <span class="stat-label">Staff Collaborator</span>
+                    </div>
+                </div>
+
+                <!-- New container for displaying details -->
+                <div id="detailsDisplayCard" class="details-display-card">
+                    <button class="close-details-button">X</button>
+                    <div id="detailsContent">
+                        <!-- Content will be injected here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">AI-Driven Projects & Impact</h2>
+            
+            <div class="stats-container">
+                <div class="interactive-stat">
+                    <span class="stat-number">700+</span>
+                    <span class="stat-label">Total Participants Trained</span>
+                </div>
+                <div class="interactive-stat">
+                    <span class="stat-label">Collaboration with Business Leadind YouTuber with</span>
+                    <span class="stat-number">170K+</span>
+                    <span class="stat-label">Subscribers</span>
+                </div>
+                <div class="interactive-stat">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Full Courses Made OER Ready in a Semester</span>
+                </div>
+            </div>
+
+            <div class="projects-grid-container"> <!-- Changed from projects-grid -->
+                <div class="project-card">
+                    <div class="project-icon">🧠</div>
+                    <h3 class="project-title">AI Evangelist & Early Adopter</h3>
+                    <div class="project-description">
+                        <p>Led GenAI conversations locally and regionally since January, 2023:</p>
+                        <ul style="margin: 1rem 0;">
+                            <li>Proposal submission for the NISOD Conference (National Institute for Staff and Organizational Development) <strong>on Feb 11, 2023</strong></li>
+                            <li>Both official (<strong>including invitations</strong>) and informal sessions at TCC, local K-12 schools, other colleges, and community groups</li>                            
+                        </ul>
+                        <div class="highlight-stat">2023 NISOD Presentation - Exceeded Room Capacity</div>
+                        <div class="highlight-stat">Inspired Multiple Institutions to Launch Their Own AI Initiatives due to 2023 NISOD Presentation</div>                                                
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">⚙️</div>
+                    <h3 class="project-title">AI-Enhanced Academic Tools</h3>
+                    <div class="project-description">
+                        <p>Developed practical AI solutions for daily operations:</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><strong>Time & Effort Tracker:</strong> Streamlined chair responsibilities for summer</li>
+                            <li><strong>LLM Comparison Tool:</strong> Collaboration with business leaders for model benchmarking</li>
+                            <li><strong>Personalized Letter of Recommendation Generator:</strong> Supported student and colleague success</li>
+                        </ul>
+                        <div class="highlight-stat">Inspired Colleague to Modify and expand of Time and Effort Tool at the NW campus</div>
+                        <div class="highlight-stat">Personalized LOR Led to Medical Residency Match Success</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎓</div>
+                    <h3 class="project-title">Classroom AI Integration</h3>
+                    <div class="project-description">
+                        <p>Embedding AI with transparency and integrity:</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><strong>Introduction to GenAI assignments</strong> with opt-out options:Encourage effective and responsible use of GenAI by students</li>
+                            <li><strong>Glossary and Concept Check Question Builders:</strong> Customized to my own materials and contents</li>
+                            <li><strong>GenAI Integrated Research Project</strong>: Preparing students to have GenAI skills for research</li>
+                        </ul>
+                        <div class="highlight-stat">Stronger, More Critical Student Research with Effective and Responsible Use of GenAI</div>
+                        <div class="highlight-stat">Inspired Colleagues to Use GenAI to Make Their Courses More Customized</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3 class="project-title">Developing a Unique and Holistic View of the GenAI Era</h3>
+                    <div class="project-description">
+                        <p>Recognizing that no existing course fully captured the interdisciplinary implications of GenAI, I created a self-directed learning journey:</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><strong>Technical Foundations:</strong> Completed Google Cloud’s Introduction to Generative AI and further studied the history and impact of Transformer architecture.</li>
+                            <li><strong>Comparative Natural Language Processing (NLP):</strong> Explored human NLP vs. LLMs through literatures — both based on prediction, attention, hierarchy, and pattern learning.</li>
+                            <li><strong>Philosophical Exploration:</strong>
+                                <ul style="margin: 0.5rem 0 0 1.5rem;">
+                                    <li>Read Kenichiro Mogi’s <em>Qualia and Artificial Awareness</em> and Roger Penrose’s <em>The Emperor’s New Mind</em>, informed by my background in quantum mechanics and computing.</li>
+                                    <li>Studied sociocognitive impacts of past tech shifts (e.g., Internet, smartphones), referencing <em>The Screen Brain</em> (Anders Hansen), <em>Sapiens</em> (Yuval Harari), and <em>Blueprint</em> (Robert Plomin).</li>
+                                    <li>Synthesized insights from behavioral psychology, anthropology, and genetics to evaluate AI’s potential effects on human cognition and social structures.</li>
+                            </li>
+                        </ul>
+                        <div class="highlight-stat">Uniquely Qualified and Profound Lens for Leading AI-Based Learning and Development Initiatives</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Future Vision for TCC</h2>
+            <p style="text-align: center; font-size: 1.3rem; margin-bottom: 3rem; font-style: italic;">
+                "Start small, listen deeply, scale smart, and lead boldly."
+            </p>
+            <p>Aligned with <strong>TCC’s Mission and Vision</strong> —to be the leader in academic excellence, student success, and economic impact— my strategic vision includes the following:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="phase-number">1</div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">Foundation Phase: Short-Term Goals</h3>
+                    <h4>Funding & Strategic Direction</h4>
+                    <ul style="margin: 1rem 0; padding-left: 20px;">
+                        <li>Secure funding from NSF’s Advanced Technological Education Program, EducateAI Initiative, and similar sources</li>
+                        <li>Assemble a core team to determine strategic direction in line with TCC's strategic plan</li>
+                        <li>Ensure alignment with and obtain agreement from internal bodies: Joint Consultation Committee, Cabinet, and Board of Trustees</li>
+                    </ul>
+                    <div class="highlight-stat">Guiding Principle: Every TCC student graduates with responsible AI literacy</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-number">2</div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">Three-Pronged Strategy: Short- to Mid-Term Goals</h3>
+                    
+                    <h4>🏛️ Institutional Strategy</h4>
+                    <ul style="margin: 1rem 0; padding-left: 20px;">
+                        <li><strong>Engage industry partners</strong> (e.g., Microsoft, Google) for guidance and strategic partnerships</li>
+                        <li><strong>Consult current advisory boards, local employers, and transfer universities</strong> to identify the GenAI skill and other associated skills</li>
+                        <li><strong>Create a living database</strong> of AI literacy and workforce needs in collaboration with local employers and university partners</li>
+                        <li><strong>Refine strategy annually</strong> based on feedback and real-world developments</li>
+                    </ul>                    
+                    
+                    <h4>🎓 Student Development</h4>
+                    <ul style="margin: 1rem 0; padding-left: 20px;">
+                        <li>Develop and launch a GenAI-focused course <strong>embedded with recognized certifications</strong> like Google AI Essentials.</li>
+                        <li>Launch pilot courses Spring term, after Fall planning.</li>
+                    </ul>
+
+                    <h4>👩‍🏫 Faculty & Staff Development</h4>
+                    <br>
+                    <p><strong>Internal Certificate Program: Levels 1–4</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 20px;">
+                        <li><strong>Level 1:</strong> Use basic tools (e.g., ChatGPT), understand strengths/limitations, and prompt engineering</li>
+                        <li><strong>Level 2:</strong> Learn risks—hallucination, data privacy, bias, environmental and ethical concerns</li>
+                        <li><strong>Level 3:</strong> Broaden to multimodal tools and research applications</li>
+                        <li><strong>Level 4:</strong> Discipline- and Department-specific use cases and operational impact
+                            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                                <li>Faculty: Redesign pedagogy and assessment based on AI’s influence in their disciplines.</li>
+                                <li>Staff: Identify opportunities for automation and define roles requiring human oversight.</li>                                
+                        </li>
+                    </ul>                    
+                    <div class="highlight-stat">Campus-by-Campus, Small Group Delivery: Graduates of Level 3 will train the next cohort, creating a self-sustaining model.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-number">∞</div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">Long-Term Impact</h3>
+                    <p>Empower TCC to become a regional and national leader in A)driven learning by:</p>
+                    <ul>
+                        <li>Securing sustainable grant and other funding and industry partnerships</li>
+                        <li>Aligning curricula with real-time employer needs</li>
+                        <li>Building a self-sustaining faculty/staff AI-certification network</li>
+                        <li>Embedding GenAI modules and industry certifications across programs</li>
+                        <li>Using data-driven feedback loops for continuous improvement</li>
+                        <li>Hosting community AI summits and innovation hubs</li>
+                    </ul>
+                    <div class="highlight-stat">All Together: These efforts drive academic excellence, student success, and regional economic growth</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles" class="section">
+        <div class="container">
+            <h2 class="section-title">Thought Leadership: Selected Writings on AI, Education, and Innovation</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; font-style: italic;">
+                "Ideas shape systems. Conversations shape culture."
+            </p>
+            <p>Each article reflects my evolving perspective as an educator, technologist, and systems thinker. These writings explore how we must rethink creativity, teaching, and institutional value in the era of artificial intelligence.</p>
+
+            <div class="articles-grid">
+                <div class="article-card" onclick="showArticleDetails('article-1')">
+                    <div class="article-number">1</div>
+                    <div class="article-title">The Profound Impact of Language-Specific Large Language Models (LLMs)</div>
+                    <div class="article-theme">AI + Language + Culture</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-2')">
+                    <div class="article-number">2</div>
+                    <div class="article-title">Beyond the Algorithm: Redefining Humanity in the Age of AI Creativity</div>
+                    <div class="article-theme">AI + Creativity + Identity</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-3')">
+                    <div class="article-number">3</div>
+                    <div class="article-title">Setting the Stage for Generative AI in Education</div>
+                    <div class="article-theme">Strategy + Implementation</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-4')">
+                    <div class="article-number">4</div>
+                    <div class="article-title">Humanity and AI: The Future of Creativity</div>
+                    <div class="article-theme">AI Singularity + Education</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-5')">
+                    <div class="article-number">5</div>
+                    <div class="article-title">Beyond the Surface: Nurturing Depth in Higher Education</div>
+                    <div class="article-theme">Rigor + Cognitive Development</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-6')">
+                    <div class="article-number">6</div>
+                    <div class="article-title">The Intersection of Human and Artificial Intelligence</div>
+                    <div class="article-theme">Awareness + Understanding</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-7')">
+                    <div class="article-number">7</div>
+                    <div class="article-title">Embracing Generative AI in the College Classroom</div>
+                    <div class="article-theme">Responsible Classroom Use</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-8')">
+                    <div class="article-number">8</div>
+                    <div class="article-title">Who Is the Customer in Education?</div>
+                    <div class="article-theme">Toyota Way Pt. 1: Redefining Value</div>
+                </div>
+
+                <div class="article-card" onclick="showArticleDetails('article-9')">
+                    <div class="article-number">9</div>
+                    <div class="article-title">Beyond Tools: Finding the Philosophy That Drives Educational Value</div>
+                    <div class="article-theme">Toyota Way Pt. 2: Depth vs Surface</div>
+                </div>
+            </div>
+
+            <!-- New container for displaying article details -->
+            <div id="articleDetailsDisplayCard" class="article-details-display-card">
+                <button class="close-details-button" onclick="closeArticleDetails()">X</button>
+                <div id="articleDetailsContent">
+                    <!-- Article content will be injected here -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer style="background: #333; color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <h3 style="margin-bottom: 1rem;">Ready to Transform Education Together?</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                "In the age of generative AI, the educator's role becomes not just to transfer knowledge, but to guide the discernment of meaning, the cultivation of empathy, and the stewardship of integrity."
+            </p>
+            <div style="background: linear-gradient(45deg, #667eea, #764ba2); padding: 2rem; border-radius: 15px; margin: 2rem auto; max-width: 600px;">
+                <h4>Contact Information</h4>
+                <p><strong>Daiju Hoshino</strong><br>
+                Department Chair and Instructor, Biology<br>
+                Tarrant County College Northwest Campus<br>
+                Email: <a href="mailto:daiju.hoshino@tccd.edu" style="color: white; text-decoration: underline;">daiju.hoshino@tccd.edu</a><br>
+                LinkedIn: <a href="https://www.linkedin.com/in/daiju-hoshino-46724937" target="_blank" style="color: white; text-decoration: underline;">linkedin.com/in/daiju-hoshino-46724937</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden content templates for details -->
+    <div id="admin-details" class="hidden-content-template">
+        <h4>Administrator's/Leader's Perspective</h4>
+        <p>I bring broad, practical experience in higher education organizational dynamics and policies:</p>
+        <ul>
+            <li><strong>Chair of the Joint Consultation Committee (JCC):</strong> Led the entire faculty and gained insight into organizational dynamics as a Cabinet member for two years.</li>
+            <li><strong>Member, SACSCOC Decennial Review Work Team:</strong> Reviewed institutional requirements and internal policies.</li>
+            <li><strong>Member, Academic Master Plan Advisory Committee:</strong> Contributed to shaping the college’s academic strategic plan.</li>
+            <li><strong>Department Chair:</strong> Led a faculty team in serving students across disciplines.</li>
+            <li><strong>Chief Manager, Educational Innovation Department (prior employer):</strong> Directed educational transformation and technology integration.</li>
+        </ul>
+    </div>
+    <div id="faculty-details" class="hidden-content-template">
+        <h4>Faculty Perspective</h4>
+        <p>I have deep experience in pedagogy and assessment, recognized through several awards and initiatives:</p>
+        <ul>
+            <li>Chancellor’s Award for Exemplary Teaching Nominee (twice)</li>
+            <li>Best Professor Award (PTK, student-selected)</li>
+            <li>Golden Apple Award (twice, peer-selected)</li>
+            <li>Designed and executed a predictive assessment system for competitive high school entrance exams in Japan.</li>
+        </ul>
+    </div>
+    <div id="staff-details" class="hidden-content-template">
+        <h4>Staff Perspective</h4>
+        <p>As a science learning lab manager and instructional associate, I have worked closely with diverse staff across departments. These experiences provided a holistic understanding of institutional needs, beyond faculty and administrative lenses.</p>
+        <p>Together, these perspectives form a solid foundation for serving as Director of AI Learning and Development.</p>
+    </div>
+
+    <!-- Hidden content templates for articles -->
+    <div id="article-1-details" class="hidden-content-template">
+        <h4>The Profound Impact of Language-Specific Large Language Models (LLMs)</h4>
+        <p><strong>Date:</strong> July 3, 2024</p>
+        <p>This article reflects on the development and limitations of Japanese-specific LLMs like ELYZA LLM. Despite technical advancements, models still lack cultural depth, especially when tested with nuanced literary forms like 連歌 (renga). I argue that language learning is not just about translation but cultural immersion—and that LLMs must capture cultural context to be truly transformative.</p>
+        <p><a href="https://www.linkedin.com/pulse/profound-impact-language-specific-large-language-models-daiju-hoshino-4mmlc/?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-2-details" class="hidden-content-template">
+        <h4>Beyond the Algorithm: Redefining Humanity in the Age of AI Creativity</h4>
+        <p><strong>Date:</strong> August 3, 2024</p>
+        <p>In light of legal battles involving AI-generated music, I explore what separates human and AI creativity. I propose that the essence of creativity lies not just in output, but in human intent, emotion, and consciousness. Rather than fearing AI, we should embrace it as a collaborator that expands our expressive range.</p>
+        <p><a href="https://www.linkedin.com/pulse/beyond-algorithm-redefining-humanity-age-ai-daiju-hoshino-kwjwc?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-3-details" class="hidden-content-template">
+        <h4>Setting the Stage for Generative AI in Education</h4>
+        <p><strong>Date:</strong> August 31, 2024</p>
+        <p>Based on a workshop I led, this article synthesizes practical applications of AI in education, educator responses, and historical parallels to technology adoption. I advocate moving from prohibition to integration—equipping students with critical thinking and information literacy to thrive alongside generative AI.</p>
+        <p><a href="https://www.linkedin.com/pulse/setting-stage-generative-ai-education-daiju-hoshino-yqqjc?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-4-details" class="hidden-content-template">
+        <h4>Humanity and AI: The Future of Creativity</h4>
+        <p><strong>Date:</strong> September 7, 2024</p>
+        <p>Inspired by a theoretical physicist’s discussion of AI's role in scientific discovery, I explore how AI might conduct experiments and inspire new human ideas. I argue that the future of education is not about competing with AI but about cultivating the human capacities—creativity, ethics, abstraction—that AI cannot replicate.</p>
+        <p><a href="https://www.linkedin.com/pulse/humanity-ai-future-creativity-inspiration-from-frontier-daiju-hoshino-hjlmc?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-5-details" class="hidden-content-template">
+        <h4>Beyond the Surface: Nurturing Depth in Higher Education</h4>
+        <p><strong>Date:</strong> December 24, 2024</p>
+        <p>Drawing on personal experience and insights from theoretical physics and language immersion, this article defends the need for intellectual depth in higher education. I challenge the tendency to over-simplify learning and emphasize the irreplaceable value of immersion, persistence, and cognitive struggle in true understanding.</p>
+        <p><a href="https://www.linkedin.com/pulse/beyond-surface-nurturing-depth-higher-education-daiju-hoshino-plnac?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-6-details" class="hidden-content-template">
+        <h4>The Intersection of Human and Artificial Intelligence: Insights into Understanding and Awareness</h4>
+        <p><strong>Date:</strong> December 28, 2024</p>
+        <p>This philosophical exploration compares predictive processing in LLMs and the human brain. Drawing from neuroscience and quantum mechanics (e.g., Penrose and Mogi), I question whether AI can ever "understand" or possess awareness. The article emphasizes that to remain human-centric, we must define what truly constitutes understanding and consciousness.</p>
+        <p><a href="https://www.linkedin.com/pulse/intersection-human-artificial-intelligence-insights-daiju-hoshino-uvl7c?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-7-details" class="hidden-content-template">
+        <h4>Embracing Generative AI in the College Classroom: A First-Week Assignment to Inspire Responsible Usage</h4>
+        <p><strong>Date:</strong> February 1, 2025</p>
+        <p>I share a step-by-step first-week assignment that introduces students to generative AI through structured, reflective practice. This practical activity encourages ethical engagement, critical thinking, and deeper comprehension of AI’s limitations. Students learn to verify outputs and integrate AI as a collaborative tool, not a shortcut.</p>
+        <p><a href="https://www.linkedin.com/pulse/embracing-generative-ai-college-classroom-first-week-inspire-hoshino-tklcc?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-8-details" class="hidden-content-template">
+        <h4>Who Is the Customer in Education? Applying the Toyota Way to Rethink Value</h4>
+        <p><strong>Date:</strong> May 1, 2025</p>
+        <p>Drawing from the Toyota Way and Japanese philosophy (守破離 - shuhari), this article challenges educators to define “value” before applying tools or techniques. I argue that students today are not always the true customers—employers, future selves, and society also depend on educational outcomes. We must align instruction with long-term, authentic value creation.</p>
+        <p><a href="https://www.linkedin.com/pulse/who-customer-education-applying-toyota-way-rethink-value-hoshino-vps6c?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+    <div id="article-9-details" class="hidden-content-template">
+        <h4>Beyond Tools: Finding the Philosophy That Drives Educational Value</h4>
+        <p><strong>Date:</strong> May 4, 2025</p>
+        <p>Continuing the Toyota Way series, I explore why educational methods often fail: they are used without understanding the philosophy behind them. Drawing parallels to my transition from teaching in Japan to the U.S., I highlight the importance of cultural context and call for a deeper educational philosophy to guide tool use, assessment, and transformation.</p>
+        <p><a href="https://www.linkedin.com/pulse/beyond-tools-finding-philosophy-drives-educational-value-hoshino-wco4c?trackingId=BmB3Q2otSWW0pOTk4ZCaBA%3D%3D&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BRAGXlucrTX%2BaOxmUoaZQfA%3D%3D" target="_blank">Read Full Article</a></p>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+            document.getElementById('progressBar').style.width = scrollPercentRounded + '%';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.project-card, .timeline-item, .article-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Interactive stats hover effects
+        document.querySelectorAll('.interactive-stat').forEach(stat => {
+            stat.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            stat.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+
+            // Click to display details in the new card
+            stat.addEventListener('click', function() {
+                const contentId = this.dataset.contentId;
+                const detailsContentDiv = document.getElementById('detailsContent');
+                const detailsDisplayCard = document.getElementById('detailsDisplayCard');
+
+                // Clear previous content
+                detailsContentDiv.innerHTML = '';
+
+                // Get the content from the hidden template and append it
+                const template = document.getElementById(contentId);
+                if (template) {
+                    const clonedContent = template.cloneNode(true);
+                    clonedContent.style.display = 'block'; // Make cloned content visible
+                    detailsContentDiv.appendChild(clonedContent);
+                    
+                    // Activate the display card WITHOUT scrolling
+                    detailsDisplayCard.classList.add('active');
+                }
+            });
+        });
+
+        // Add event listener for the close button on the details display card
+        document.querySelector('#detailsDisplayCard .close-details-button').addEventListener('click', function() {
+            const detailsDisplayCard = document.getElementById('detailsDisplayCard');
+            const detailsContentDiv = document.getElementById('detailsContent');
+            
+            detailsDisplayCard.classList.remove('active');
+            // Clear content after animation to prevent flickering if re-expanded quickly
+            setTimeout(() => {
+                detailsContentDiv.innerHTML = '';
+            }, 700); // Matches the max-height transition duration
+        });
+
+
+        // Article card interactions (modified)
+        function showArticleDetails(articleId) {
+            const articleDetailsContentDiv = document.getElementById('articleDetailsContent');
+            const articleDetailsDisplayCard = document.getElementById('articleDetailsDisplayCard');
+
+            // Clear previous content
+            articleDetailsContentDiv.innerHTML = '';
+
+            // Get the content from the hidden template and append it
+            const template = document.getElementById(articleId + '-details');
+            if (template) {
+                const clonedContent = template.cloneNode(true);
+                clonedContent.style.display = 'block'; // Make cloned content visible
+                articleDetailsContentDiv.appendChild(clonedContent);
+                
+                // Activate the display card and scroll to it
+                articleDetailsDisplayCard.classList.add('active');
+                articleDetailsDisplayCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Function to close article details card
+        function closeArticleDetails() {
+            const articleDetailsDisplayCard = document.getElementById('articleDetailsDisplayCard');
+            const articleDetailsContentDiv = document.getElementById('articleDetailsContent');
+            
+            articleDetailsDisplayCard.classList.remove('active');
+            setTimeout(() => {
+                articleDetailsContentDiv.innerHTML = '';
+            }, 700); // Matches the max-height transition duration
+        }
+
+
+        // Add floating animation to project icons
+        document.querySelectorAll('.project-icon').forEach((icon, index) => {
+            icon.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                window.scrollBy(0, 100);
+            } else if (e.key === 'ArrowUp') {
+                window.scrollBy(0, -100);
+            }
+        });
+    </script>
+</body>
+</html>
