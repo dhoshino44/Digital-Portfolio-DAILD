@@ -653,8 +653,8 @@
                 <img src="Images/Portrait.jpg" alt="Placeholder Image" class="profile-img">
                 <h1>Daiju Hoshino</h1>
                 <h2>Department Chair & AI Innovation Leader</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Transforming education through responsible AI integration at Tarrant County College Northwest Campus
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    Transforming education through responsible AI integration at Tarrant County College
                 </p>
                 <a href="#philosophy" class="cta-button">Explore My Vision</a>
             </div>
@@ -674,7 +674,7 @@
                     <p>To help Tarrant County College become a <strong>national leader in responsible, creative, and equitable AI integration</strong>—serving all campuses, empowering faculty and staff, and preparing students to thrive in a rapidly evolving world.</p>
                 </div>
 
-                <p>I bring a uniquely integrated background shaped by three interconnected perspectives:</p>
+                <p>I bring a uniquely integrated background shaped by three interconnected perspectives (Click each card for more details):</p>
                 
                 <div class="stats-container">
                     <div class="interactive-stat" data-content-id="admin-details">
@@ -708,23 +708,23 @@
             <h2 class="section-title">AI-Driven Projects & Impact</h2>
             
             <div class="stats-container">
-                <div class="interactive-stat">
+                <div class="interactive-stat" data-target-card="ai-evangelist-card">
                     <span class="stat-number">700+</span>
                     <span class="stat-label">Total Participants Trained</span>
                 </div>
-                <div class="interactive-stat">
-                    <span class="stat-label">Collaboration with Business Leading YouTuber with</span>
+                <div class="interactive-stat" data-target-card="ai-enhanced-tools-card">
+                    <span class="stat-label">Collaboration with Business Leadind YouTuber with</span>
                     <span class="stat-number">170K+</span>
                     <span class="stat-label">Subscribers</span>
                 </div>
-                <div class="interactive-stat">
+                <div class="interactive-stat" data-target-card="classroom-ai-card">
                     <span class="stat-number">2</span>
                     <span class="stat-label">Full Courses Made OER Ready in a Semester</span>
                 </div>
             </div>
 
             <div class="projects-grid-container"> <!-- Changed from projects-grid -->
-                <div class="project-card">
+                <div class="project-card" id="ai-evangelist-card">
                     <div class="project-icon">🧠</div>
                     <h3 class="project-title">AI Evangelist & Early Adopter</h3>
                     <div class="project-description">
@@ -734,11 +734,11 @@
                             <li>Both official (<strong>including invitations</strong>) and informal sessions at TCC, local K-12 schools, other colleges, and community groups</li>                            
                         </ul>
                         <div class="highlight-stat">2023 NISOD Presentation - Exceeded Room Capacity</div>
-                        <div class="highlight-stat">Inspired Multiple Institutions to Launch Their Own AI Initiatives due to 2023 NISOD Presentation</div>                                                
+                        <div class="highlight-stat">Inspired Multiple Institutions to Launch Their Own AI Initiatives from the 2023 NISOD Presentation</div>                                                
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" id="ai-enhanced-tools-card">
                     <div class="project-icon">⚙️</div>
                     <h3 class="project-title">AI-Enhanced Academic Tools</h3>
                     <div class="project-description">
@@ -748,12 +748,12 @@
                             <li><strong>LLM Comparison Tool:</strong> Collaboration with business leaders for model benchmarking</li>
                             <li><strong>Personalized Letter of Recommendation Generator:</strong> Supported student and colleague success</li>
                         </ul>
-                        <div class="highlight-stat">Inspired Colleague to Modify and expand of Time and Effort Tool at the NW campus</div>
+                        <div class="highlight-stat">Inspired Colleague to Modify and Expand of Time and Effort Tool at the NW Campus</div>
                         <div class="highlight-stat">Personalized LOR Led to Medical Residency Match Success</div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" id="classroom-ai-card">
                     <div class="project-icon">🎓</div>
                     <h3 class="project-title">Classroom AI Integration</h3>
                     <div class="project-description">
@@ -1109,24 +1109,36 @@
                 this.style.transform = 'scale(1)';
             });
 
-            // Click to display details in the new card
+            // Click to display details in the new card OR scroll to target
             stat.addEventListener('click', function() {
                 const contentId = this.dataset.contentId;
-                const detailsContentDiv = document.getElementById('detailsContent');
-                const detailsDisplayCard = document.getElementById('detailsDisplayCard');
+                const targetCardId = this.dataset.targetCard;
 
-                // Clear previous content
-                detailsContentDiv.innerHTML = '';
+                if (contentId) { // For philosophy section interactive stats
+                    const detailsContentDiv = document.getElementById('detailsContent');
+                    const detailsDisplayCard = document.getElementById('detailsDisplayCard');
 
-                // Get the content from the hidden template and append it
-                const template = document.getElementById(contentId);
-                if (template) {
-                    const clonedContent = template.cloneNode(true);
-                    clonedContent.style.display = 'block'; // Make cloned content visible
-                    detailsContentDiv.appendChild(clonedContent);
-                    
-                    // Activate the display card WITHOUT scrolling
-                    detailsDisplayCard.classList.add('active');
+                    // Clear previous content
+                    detailsContentDiv.innerHTML = '';
+
+                    // Get the content from the hidden template and append it
+                    const template = document.getElementById(contentId);
+                    if (template) {
+                        const clonedContent = template.cloneNode(true);
+                        clonedContent.style.display = 'block'; // Make cloned content visible
+                        detailsContentDiv.appendChild(clonedContent);
+                        
+                        // Activate the display card WITHOUT scrolling
+                        detailsDisplayCard.classList.add('active');
+                    }
+                } else if (targetCardId) { // For project stats cards
+                    const targetElement = document.getElementById(targetCardId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
